@@ -6,8 +6,6 @@ import { Col, Row, Select, Typography, Watermark } from 'antd';
 import { DefaultSeo } from 'next-seo';
 import { useLocalesStore } from 'src/stores/common/locales';
 import Layout from '@components/common/Layout';
-//import TaskTable from '@components/features/module-1/TasksTable';
-
 const { Title } = Typography;
 
 const Home = () => {
