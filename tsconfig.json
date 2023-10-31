@@ -12,6 +12,7 @@
       "@locales/*": ["src/locales/*"],
       "@hooks/*": ["src/hooks/*"],
       "@configs/*": ["src/configs/*"],
+      "@axios/*": ["src/axios/*"],
       "@scripts/*": ["scripts/*"]
     },
     "target": "es5",

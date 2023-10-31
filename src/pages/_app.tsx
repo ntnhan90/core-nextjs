@@ -6,6 +6,7 @@ import '@styles/globals.scss';
 import '../../assets/css/bootstrap.min.css';
 import '../../assets/css/styles.scss';
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 import React, { ReactElement, ReactNode, useEffect } from 'react';
 import { NextPage } from 'next';
@@ -60,6 +61,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
         />
       </Head>
       <QueryClientProvider client={queryClient}>
+          <ToastContainer />
           <ConfigProvider autoInsertSpaceInButton={false} theme={THEME_CONFIG}>
             <StyleProvider transformers={[legacyLogicalPropertiesTransformer]}>
               {hydated && (

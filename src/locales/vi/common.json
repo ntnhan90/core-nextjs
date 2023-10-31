@@ -2,6 +2,8 @@
   "module_1": {
     "title": "Chào mừng trở lại!",
     "description": "Danh sách công việc trong tháng này!",
+    "login": "Đăng nhập",
+    "SignUp": "Đăng kí",
     "label": {
       "task": "Công việc",
       "title": "Tiêu đề",
