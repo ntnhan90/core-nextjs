@@ -1,14 +1,30 @@
 import Link from 'next/link';
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import { DefaultSeo } from 'next-seo';
+import { SEO } from '@configs/seo.config';
 
 const ForgotPassword = () => {
     const {register,  handleSubmit } = useForm();
+
+    const router = useRouter();
+
+
     const onSubmit = async (data: any) => {
         console.log(data);
+
+        toast.success("Login Success!", { autoClose: 1500 });
+        setTimeout(() => {
+            router.push("/chage-password");
+        }, 10000);
     };
 
+    
+
     return (
-    <>
+    <>  
+        <DefaultSeo {...SEO} title="Register" />
         <div className="all-title-box">
             <div
                 className="container p-5 text-center text-dark fw-bold fs-4"
@@ -19,11 +35,7 @@ const ForgotPassword = () => {
         </div>  
         <section className="form-page">
             <div className="container">
-
                 <div className="form-block">
-                    <h2 className="form-block__title">Forgot your password?</h2>
-                    <p className="form-block__description">Enter your email or phone number and recover your account</p>
-                
                     <form className="form" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form__input-row">
                         <input 

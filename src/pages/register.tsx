@@ -3,13 +3,21 @@ import Link from "next/link"
 import { useForm } from "react-hook-form";
 import { DefaultSeo } from 'next-seo';
 import { SEO } from '@configs/seo.config';
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+
 
 const RegisterPage = () => {
     const { register, handleSubmit } = useForm();
-    //const router = useRouter();
+    const router = useRouter();
 
     const onSubmit = async (data: any) => {
         console.log(data);
+        toast.success("Login Success!", { autoClose: 1500 });
+        setTimeout(() => {
+            router.push("/goto_login");
+        }, 10000);
+
     };
 
     return (

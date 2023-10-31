@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-unused-modules */
 
-import 'antd/dist/reset.css';
+//import 'antd/dist/reset.css';
 import '@styles/globals.scss';
 import '../../assets/css/bootstrap.min.css';
 import '../../assets/css/styles.scss';
+import "react-toastify/dist/ReactToastify.css";
 
 import React, { ReactElement, ReactNode, useEffect } from 'react';
 import { NextPage } from 'next';
