@@ -1,27 +1,6 @@
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { CreateStoreAPI } from "../api/Store/Store";
-
-
-const CONTENT = [
-  "URL Name at least 3 characters.",
-  "Only English letters and numbers are allowed, no spaces.",
-  "The URL cannot be changed.",
-];
 
 const CreateStore = () => {
-  const queryClient = useQueryClient();
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm();
 
-
-    const onSubmit = (data: any) => {
-      console.log(data);   
-    };
     return (
     <>
         <div style={{ minHeight: "900px" }}>
@@ -33,60 +12,6 @@ const CreateStore = () => {
                     BANANALINK
                 </div>
             </div>
-            <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="d-flex flex-column justify-content-center align-items-center"
-        >
-          <div className="form-page mt-5 pb-0" style={{ width: "500px" }}>
-            <input
-              type="text"
-              placeholder="Name"
-              className="w-100 p-1"
-              id="name"
-              {...register("name")}
-            />
-            
-          </div>
-
-          <div
-            className="pb-0 pt-5 d-flex align-items-center"
-            style={{ width: "500px" }}
-          >
-            <div className="text-dark pb-3">https://treetown.com/</div>
-            <div className="w-100">
-              <input
-                id="url"
-                type="text"
-                className="w-100 p-1 form__input"
-                placeholder="Url"
-                {...register("url")}
-              />
-
-             
-            </div>
-          </div>
-        
-          <div className="form-page pb-0">
-            <div className="container">
-              <div className="form-block">
-                <div className="form d-flex flex-column mb-3">
-                  <button
-                    type="submit"
-                    className="btn p-2 px-5 "
-                    style={{ backgroundColor: "#6d9eeb" }}
-                  >
-                    <div
-                      className="text-dark fw-semibold fs-6"
-                      style={{ backgroundColor: "#9fc5e8" }}
-                    >
-                      Confirm
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
         </div>
     </>
     );
