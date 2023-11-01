@@ -1,6 +1,5 @@
 
 const CreateStore = () => {
-
     return (
     <>
         <div style={{ minHeight: "900px" }}>
@@ -14,7 +13,7 @@ const CreateStore = () => {
             </div>
         </div>
     </>
-    );
+    );   
 };
 
 export default CreateStore;
