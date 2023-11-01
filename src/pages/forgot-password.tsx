@@ -8,8 +8,12 @@ import { postData } from "@utils/services";
 import { server } from "@utils/server";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+type FormValues ={
+    email:string;
+}
+
 const ForgotPassword = () => {
-    const {register,  handleSubmit,formState: { errors }, } = useForm();
+    const {register,  handleSubmit,formState: { errors }, } = useForm<FormValues>();
 
     const router = useRouter();
 
@@ -34,11 +38,6 @@ const ForgotPassword = () => {
     };
 
     
-    /* 
-    {errors.email && (
-                            <span className="bg-yellow-400">{errors.email.message}</span>
-                        )}
-                        */
     return (
     <>  
         <DefaultSeo {...SEO} title="Register" />
@@ -67,7 +66,7 @@ const ForgotPassword = () => {
                                 },
                             })}
                         />
-
+                        <p>{errors.email?.message}</p>
                         
                         </div>
 

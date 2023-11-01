@@ -12,6 +12,7 @@
       "@locales/*": ["src/locales/*"],
       "@hooks/*": ["src/hooks/*"],
       "@configs/*": ["src/configs/*"],
+      "@layout/*": ["src/layout/*"],
       "@axios/*": ["src/axios/*"],
       "@scripts/*": ["scripts/*"]
     },

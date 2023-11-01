@@ -2,26 +2,31 @@ import Link from 'next/link';
 import { useForm } from "react-hook-form";
 import { postData } from "@utils/services";
 import { server } from "@utils/server";
-import { GetServerSideProps } from "next";
-import { ErrorMessage } from "@hookform/error-message"
+//import { GetServerSideProps } from "next";
 
+/*
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const token = query.token;
-  const res = await fetch(`${server}forgotPw/${token}`);
-  const product = await res.json();
+ // const res = await fetch(`${server}forgotPw/${token}`);
+ // const product = await res.json();
 
   return {
     props: {
-      product,
+      token,
     },
   }
 }
 
+*/
+type FormValues ={
+    password:string;
+    confirmPw: string;
+}
 
-const ChangePassword = ({ product }: any) => {
-    console.log(product);
-    const {register,watch,  handleSubmit,formState: { errors }, } = useForm();
-    
+const ChangePassword = () => {
+    const {register,watch,  handleSubmit,formState } = useForm<FormValues>();
+    const {errors } = formState;
+
     const onSubmit = async (data: any) => {
         console.log(data);
     };
@@ -53,7 +58,7 @@ const ChangePassword = ({ product }: any) => {
                                         }
                                     })}
                                     />
-                               
+                                <p>{errors.password?.message}</p>
 
                             </div>
                             <div className="form__input-row">
@@ -67,12 +72,12 @@ const ChangePassword = ({ product }: any) => {
                                     },
                                     validate: (val: string) => {
                                         if (watch('password') != val) {
-                                            return "Your passwords do no match";
+                                            return "Your passwords do not match";
                                         }
                                     },
                                 })}
                                 />
-                               
+                                <p>{errors.confirmPw?.message}</p>
                             </div>
                             <button type="submit" className="btn btn--rounded btn--yellow btn-submit">Reset password</button>
                         </form>

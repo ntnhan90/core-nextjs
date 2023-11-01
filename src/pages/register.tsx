@@ -13,6 +13,14 @@ import { useTranslations } from '@hooks/common/locales.hook';
 import { Select } from 'antd';
 import { useLocalesStore } from 'src/stores/common/locales';
 
+
+type FormValues ={
+    password:string;
+    id: string;
+    confirmPw:string;
+    email:string;
+}
+
 const RegisterPage = () => {
     const { locale, t } = useTranslations();
     const changeLocale = useLocalesStore((state) => state.changeLocale);
@@ -21,10 +29,7 @@ const RegisterPage = () => {
         console.log(value);
     };
         
-
-
-
-    const { register, handleSubmit,watch,   formState: { errors },  } = useForm();
+    const { register, handleSubmit,watch,   formState: { errors },  } = useForm<FormValues>();
     const router = useRouter();
 
     const onSubmit = async (data: any) => {
@@ -87,7 +92,7 @@ const RegisterPage = () => {
                                         },   
                                     })}
                                     />
-
+                                    <p>{errors.id?.message}</p>
                                    
                                 </div>
                           
@@ -105,7 +110,7 @@ const RegisterPage = () => {
                                         },
                                     })}
                                     />
-                                  
+                                    <p>{errors.password?.message}</p>
                                 </div>
 
                                 <div className="form__input-row form-group mt-2">
@@ -122,7 +127,7 @@ const RegisterPage = () => {
                                             }
                                         },
                                     })}/>
-
+                                    <p>{errors.confirmPw?.message}</p>
                                 </div>
 
                                 <div className="form__input-row form-group mt-2">
@@ -134,7 +139,7 @@ const RegisterPage = () => {
                                             message: "Entered value does not match email format",
                                         },
                                     })}/>
-
+                                    <p>{errors.email?.message}</p>
                                    
                                 </div>
                                 <button  className="btn btn--rounded btn--yellow btn-submit" type="submit">{t(`module_1.SignUp`)}</button>

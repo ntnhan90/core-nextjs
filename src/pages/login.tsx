@@ -15,6 +15,12 @@ import { server } from "@utils/server";
 import { saveState } from "@utils/localstorage";
 import { useRouter } from "next/router";
 
+
+type FormValues ={
+    password:string;
+    id: string;
+}
+
 const Login = () => {
     const { locale, t } = useTranslations();
     const changeLocale = useLocalesStore((state) => state.changeLocale);
@@ -25,7 +31,7 @@ const Login = () => {
 
 
     const router = useRouter();
-    const {   register,  handleSubmit,   formState: { errors },   } = useForm();
+    const {   register,  handleSubmit,   formState: { errors },   } = useForm<FormValues>();
     const onSubmit = async (data: any) => {
         const res = await postData(`${server}auth/signIn`, {
           id: data.id,
@@ -87,11 +93,9 @@ const Login = () => {
                                             value: 6,
                                             message: "min length is 6",
                                         },
-                                    }
-
-                                    )}  
+                                    })}  
                                     />
-                                    
+                                    <p>{errors.id?.message}</p>
                                 </div>
                                  
 
@@ -103,10 +107,14 @@ const Login = () => {
                                         minLength: {
                                             value: 8,
                                             message: "min length is 8",
-                                        }
+                                        },
+                                        pattern: {
+                                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                                            message: "Passwords include letters, numbers and special characters",
+                                        },
                                     })}
                                     />
-
+                                    <p>{errors.password?.message}</p>
                                    
                                 </div>
                                
