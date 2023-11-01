@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 4444",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -11,7 +11,7 @@
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^3.3.2",
-    "@tanstack/react-query": "^5.4.3",
+    "@tanstack/react-query": "4.29.5",
     "antd": "^5.10.2",
     "axios": "^1.6.0",
     "cookies-next": "^4.0.0",

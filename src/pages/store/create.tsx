@@ -1,5 +1,8 @@
 
 import { useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { CreateStoreAPI } from "../api/Store/Store";
+import { toast } from "react-toastify";
 
 type FormValues ={
     name:string;
@@ -7,7 +10,24 @@ type FormValues ={
 }
 const CreateStore = () => {
     const {   register,  handleSubmit,   formState: { errors },   } = useForm<FormValues>();
+
+    const queryClient = useQueryClient();
+    const { mutate } = useMutation(CreateStoreAPI, {
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: ["store"] });
+          toast.success("Create Store Success!", { autoClose: 1500 });
+        },
+        onError: (error: any) => {
+          toast.error(error.response.data.message, { autoClose: 1500 });
+        },
+    });
+
     const onSubmit = async (data: any) => {
+        mutate({
+            name: data.name,
+            url: `https://treetown.com/${data.url}`,
+            position: "Owner",
+        });
         console.log(data);
     };
     return (
@@ -18,7 +38,7 @@ const CreateStore = () => {
                     className="container p-5 text-center text-dark fw-bold fs-4"
                     style={{ backgroundColor: "#eeece1" }}
                 >
-                    BANANALINK 12
+                    BANANALINK
                 </div>
             </div>
         </div>

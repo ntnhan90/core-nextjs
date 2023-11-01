@@ -1,5 +1,13 @@
-
+import { useQuery } from "@tanstack/react-query";
+import { GetStore } from "../api/Store/Store";
+import Link from "next/link";
 const Store = () => {
+  const { data, isLoading } = useQuery<any>({
+    queryKey: ["store"],
+    queryFn: () => GetStore(),
+  });
+  console.log(data?.data);
+  const realData = data?.data;
 
   return (
     <>
@@ -20,7 +28,7 @@ const Store = () => {
                   Please select a registered store.
                 </div>
                 <div className="form d-flex flex-column mb-3">
-                  <a
+                  <Link
                     href="/store/create"
                     className="btn p-2 px-5 "
                     style={{ backgroundColor: "#6d9eeb" }}
@@ -31,7 +39,7 @@ const Store = () => {
                     >
                       New store registration
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -39,7 +47,31 @@ const Store = () => {
 
           <div className="pb-5 mb-5 d-flex flex-column justify-content-center align-items-center">
             <ul className="d-flex flex-column gap-2">
-              
+              {isLoading ? (
+                <></>
+              ) : (
+                realData.map((item: any) => (
+                  <li key={item.name} style={{ listStyleType: "disc" }}>
+                    <div className="d-flex">
+                      <div className="text-dark p-2">
+                         <Link
+                          href="/dashboard"
+                        >  
+                        {item.name}
+                        </Link>
+                      </div>{" "}
+                      <div
+                        className="text-dark p-2 border border-secondary rounded-circle"
+                        style={{ backgroundColor: "#eeece1" }}
+                      > 
+                       
+                        {item.position}
+                        
+                      </div>
+                    </div>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
         </div>
