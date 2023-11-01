@@ -20,6 +20,10 @@ function removeUndefinedAndNull(obj: Object) {
   return result;
 }
 
-const REQUIRE_ENV = ['NEXT_PUBLIC_API_ENDPOINT'];
+//const dev = process.env.NEXT_PUBLIC_API_ENDPOINT !== "production";
+
+export const REQUIRE_ENV = process.env.NEXT_PUBLIC_API_ENDPOINT
+
+//const REQUIRE_ENV = ['NEXT_PUBLIC_API_ENDPOINT'];
 
 export { getDictionary, removeUndefinedAndNull, REQUIRE_ENV };
