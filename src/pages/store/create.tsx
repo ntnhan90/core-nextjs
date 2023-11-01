@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CreateStoreAPI } from "../api/Store/Store";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 type FormValues ={
     name:string;
@@ -10,12 +11,15 @@ type FormValues ={
 }
 const CreateStore = () => {
     const {   register,  handleSubmit,   formState: { errors },   } = useForm<FormValues>();
-
+    const router = useRouter();
     const queryClient = useQueryClient();
     const { mutate } = useMutation(CreateStoreAPI, {
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: ["store"] });
           toast.success("Create Store Success!", { autoClose: 1500 });
+          setTimeout(() => {
+                 router.push("/store");
+            }, 2000);
         },
         onError: (error: any) => {
           toast.error(error.response.data.message, { autoClose: 1500 });
