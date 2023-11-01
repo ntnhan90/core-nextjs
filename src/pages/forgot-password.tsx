@@ -6,7 +6,6 @@ import { DefaultSeo } from 'next-seo';
 import { SEO } from '@configs/seo.config';
 import { postData } from "@utils/services";
 import { server } from "@utils/server";
-import { schema } from "@components/PageComponents/Store/CreateStore/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const ForgotPassword = () => {
@@ -35,7 +34,11 @@ const ForgotPassword = () => {
     };
 
     
-
+    /* 
+    {errors.email && (
+                            <span className="bg-yellow-400">{errors.email.message}</span>
+                        )}
+                        */
     return (
     <>  
         <DefaultSeo {...SEO} title="Register" />
@@ -65,9 +68,7 @@ const ForgotPassword = () => {
                             })}
                         />
 
-                        {errors.email && (
-                            <span className="bg-yellow-400">{errors.email.message}</span>
-                        )}
+                        
                         </div>
 
                         <button type="submit" className="btn btn--rounded btn--yellow btn-submit">Confirm</button>

@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { useForm } from "react-hook-form";
 import { postData } from "@utils/services";
 import { server } from "@utils/server";
+import { GetServerSideProps } from "next";
+import { ErrorMessage } from "@hookform/error-message"
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const token = query.token;
@@ -51,9 +53,7 @@ const ChangePassword = ({ product }: any) => {
                                         }
                                     })}
                                     />
-                                    {errors.password && (
-                                        <span className="bg-yellow-400">{errors?.password?.message}</span>
-                                    )}
+                               
 
                             </div>
                             <div className="form__input-row">
@@ -72,9 +72,7 @@ const ChangePassword = ({ product }: any) => {
                                     },
                                 })}
                                 />
-                                {errors.confirmPw && (
-                                    <span className="bg-yellow-400">{errors.confirmPw.message}</span>
-                                )}
+                               
                             </div>
                             <button type="submit" className="btn btn--rounded btn--yellow btn-submit">Reset password</button>
                         </form>

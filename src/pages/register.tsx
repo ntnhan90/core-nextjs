@@ -88,9 +88,7 @@ const RegisterPage = () => {
                                     })}
                                     />
 
-                                    {errors.id && (
-                                        <span className="bg-yellow-400">{errors.id.message}</span>
-                                    )}
+                                   
                                 </div>
                           
                                 <div className="form__input-row form-group mt-2">
@@ -107,9 +105,7 @@ const RegisterPage = () => {
                                         },
                                     })}
                                     />
-                                    {errors.password && (
-                                        <span className="bg-yellow-400">{errors.password.message}</span>
-                                    )}
+                                  
                                 </div>
 
                                 <div className="form__input-row form-group mt-2">
@@ -127,9 +123,6 @@ const RegisterPage = () => {
                                         },
                                     })}/>
 
-                                    {errors.confirmPw && (
-                                        <span className="bg-yellow-400">{errors.confirmPw.message}</span>
-                                    )}
                                 </div>
 
                                 <div className="form__input-row form-group mt-2">
@@ -142,9 +135,7 @@ const RegisterPage = () => {
                                         },
                                     })}/>
 
-                                    {errors.email && (
-                                        <span className="bg-yellow-400">{errors.email.message}</span>
-                                    )}
+                                   
                                 </div>
                                 <button  className="btn btn--rounded btn--yellow btn-submit" type="submit">{t(`module_1.SignUp`)}</button>
 

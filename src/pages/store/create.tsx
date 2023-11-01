@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { schema } from "@components/PageComponents/Store/CreateStore/schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CreateStoreAPI } from "../api/Store/Store";
@@ -19,22 +18,10 @@ const CreateStore = () => {
         formState: { errors },
       } = useForm();
 
-  const { mutate } = useMutation(CreateStoreAPI, {
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["store"] });
-      toast.success("Create Store Success!", { autoClose: 1500 });
-    },
-    onError: (error: any) => {
-      toast.error(error.response.data.message, { autoClose: 1500 });
-    },
-  });
+
     const onSubmit = (data: any) => {
-        mutate({
-          name: data.name,
-          url: `https://treetown.com/${data.url}`,
-          position: "Owner",
-        });
-      };
+      console.log(data);   
+    };
     return (
     <>
         <div style={{ minHeight: "900px" }}>
@@ -58,12 +45,6 @@ const CreateStore = () => {
               id="name"
               {...register("name")}
             />
-            <span
-              className="invalid-feedback d-flex error-message ps-2"
-              style={{ height: "16px" }}
-            >
-              {errors.name && errors.name.message}
-            </span>
             
           </div>
 
@@ -81,12 +62,7 @@ const CreateStore = () => {
                 {...register("url")}
               />
 
-              <span
-                className="invalid-feedback d-flex error-message ps-2 w-100"
-                style={{ height: "16px" }}
-              >
-                {errors.url && errors.url.message}
-              </span>
+             
             </div>
           </div>
         

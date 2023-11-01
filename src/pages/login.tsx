@@ -91,9 +91,7 @@ const Login = () => {
 
                                     )}  
                                     />
-                                    {errors.id && (
-                                        <span className="bg-yellow-400">{errors.id.message}</span>
-                                    )}
+                                    
                                 </div>
                                  
 
@@ -109,9 +107,7 @@ const Login = () => {
                                     })}
                                     />
 
-                                    {errors.password && (
-                                        <span className="bg-yellow-400">{errors.password.message} </span>
-                                    )}
+                                   
                                 </div>
                                
                                 <div className="form-group mt-2">
